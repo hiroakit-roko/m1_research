@@ -1,0 +1,1964 @@
+{
+  "2001": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "中川家",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 829,
+        "final_order": 1,
+        "final_votes": 6
+      },
+      {
+        "rank": 2,
+        "name": "ハリガネロック",
+        "agency": "吉本興業",
+        "first_order": 10,
+        "first_score": 809,
+        "final_order": 2,
+        "final_votes": 1
+      },
+      {
+        "rank": 3,
+        "name": "アメリカザリガニ",
+        "agency": "松竹芸能",
+        "first_order": 4,
+        "first_score": 796,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 4,
+        "name": "ますだおかだ",
+        "agency": "松竹芸能",
+        "first_order": 8,
+        "first_score": 770,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "麒麟",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 741,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "フットボールアワー",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 726,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "キングコング",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 707,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "チュートリアル",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 637,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "DonDokoDon",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 614,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "おぎやはぎ",
+        "agency": "プロダクション人力舎",
+        "first_order": 5,
+        "first_score": 540,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2002": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "ますだおかだ",
+        "agency": "松竹芸能",
+        "first_order": 2,
+        "first_score": 612,
+        "final_order": 3,
+        "final_votes": 5
+      },
+      {
+        "rank": 2,
+        "name": "フットボールアワー",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 621,
+        "final_order": 1,
+        "final_votes": 2
+      },
+      {
+        "rank": 3,
+        "name": "笑い飯",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 567,
+        "final_order": 2,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "おぎやはぎ",
+        "agency": "プロダクション人力舎",
+        "first_order": 7,
+        "first_score": 561,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "ハリガネロック",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 545,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "テツandトモ",
+        "agency": "ニチエンプロダクション",
+        "first_order": 4,
+        "first_score": 539,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "スピードワゴン",
+        "agency": "ホリプロコム",
+        "first_order": 9,
+        "first_score": 535,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "ダイノジ",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 534,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "アメリカザリガニ",
+        "agency": "松竹芸能",
+        "first_order": 8,
+        "first_score": 525,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2003": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "フットボールアワー",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 663,
+        "final_order": 3,
+        "final_votes": 4
+      },
+      {
+        "rank": 2,
+        "name": "笑い飯",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 656,
+        "final_order": 1,
+        "final_votes": 3
+      },
+      {
+        "rank": 3,
+        "name": "アンタッチャブル",
+        "agency": "プロダクション人力舎",
+        "first_order": 9,
+        "first_score": 616,
+        "final_order": 2,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "2丁拳銃",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 608,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "りあるキッズ",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 601,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "スピードワゴン",
+        "agency": "ホリプロコム",
+        "first_order": 3,
+        "first_score": 572,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "アメリカザリガニ",
+        "agency": "松竹芸能",
+        "first_order": 6,
+        "first_score": 564,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "麒麟",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 554,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "千鳥",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 552,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2004": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "アンタッチャブル",
+        "agency": "プロダクション人力舎",
+        "first_order": 8,
+        "first_score": 673,
+        "final_order": 1,
+        "final_votes": 6
+      },
+      {
+        "rank": 2,
+        "name": "南海キャンディーズ",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 639,
+        "final_order": 3,
+        "final_votes": 1
+      },
+      {
+        "rank": 3,
+        "name": "麒麟",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 634,
+        "final_order": 2,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "タカアンドトシ",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 615,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "笑い飯",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 615,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "POISON GIRL BAND",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 603,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "トータルテンボス",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 587,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "東京ダイナマイト",
+        "agency": "オフィス北野",
+        "first_order": 3,
+        "first_score": 583,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "千鳥",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 582,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2005": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "ブラックマヨネーズ",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 659,
+        "final_order": 3,
+        "final_votes": 4
+      },
+      {
+        "rank": 2,
+        "name": "笑い飯",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 633,
+        "final_order": 2,
+        "final_votes": 3
+      },
+      {
+        "rank": 3,
+        "name": "麒麟",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 646,
+        "final_order": 1,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "品川庄司",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 626,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "チュートリアル",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 622,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "千鳥",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 607,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "タイムマシーン3号",
+        "agency": "太田プロダクション",
+        "first_order": 7,
+        "first_score": 571,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "アジアン",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 564,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "南海キャンディーズ",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 552,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2006": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "チュートリアル",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 664,
+        "final_order": 3,
+        "final_votes": 7
+      },
+      {
+        "rank": 2,
+        "name": "フットボールアワー",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 640,
+        "final_order": 2,
+        "final_votes": 0
+      },
+      {
+        "rank": 3,
+        "name": "麒麟",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 627,
+        "final_order": 1,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "笑い飯",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 626,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "トータルテンボス",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 613,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "ライセンス",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 609,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "ザ・プラン9",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 597,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "変ホ長調",
+        "agency": "松竹芸能",
+        "first_order": 7,
+        "first_score": 576,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "POISON GIRL BAND",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 570,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2007": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "サンドウィッチマン",
+        "agency": "フラットファイヴ",
+        "first_order": 9,
+        "first_score": 651,
+        "final_order": 3,
+        "final_votes": 4
+      },
+      {
+        "rank": 2,
+        "name": "トータルテンボス",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 646,
+        "final_order": 1,
+        "final_votes": 2
+      },
+      {
+        "rank": 3,
+        "name": "キングコング",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 650,
+        "final_order": 2,
+        "final_votes": 1
+      },
+      {
+        "rank": 4,
+        "name": "ハリセンボン",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 608,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "笑い飯",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 604,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "ザブングル",
+        "agency": "ワタナベエンターテインメント",
+        "first_order": 3,
+        "first_score": 597,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "ダイアン",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 593,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "千鳥",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 580,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "POISON GIRL BAND",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 577,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2008": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "NON STYLE",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 644,
+        "final_order": 2,
+        "final_votes": 5
+      },
+      {
+        "rank": 2,
+        "name": "オードリー",
+        "agency": "ケイダッシュステージ",
+        "first_order": 9,
+        "first_score": 649,
+        "final_order": 3,
+        "final_votes": 2
+      },
+      {
+        "rank": 3,
+        "name": "ナイツ",
+        "agency": "マセキ芸能社",
+        "first_order": 4,
+        "first_score": 640,
+        "final_order": 1,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "笑い飯",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 637,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "U字工事",
+        "agency": "アミー・パーク",
+        "first_order": 5,
+        "first_score": 623,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "ダイアン",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 619,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "モンスターエンジン",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 614,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "キングコング",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 612,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "ザ・パンチ",
+        "agency": "サンミュージックプロダクション",
+        "first_order": 6,
+        "first_score": 591,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2009": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "パンクブーブー",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 651,
+        "final_order": 2,
+        "final_votes": 7
+      },
+      {
+        "rank": 2,
+        "name": "笑い飯",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 668,
+        "final_order": 3,
+        "final_votes": 0
+      },
+      {
+        "rank": 3,
+        "name": "NON STYLE",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 641,
+        "final_order": 1,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "ナイツ",
+        "agency": "マセキ芸能社",
+        "first_order": 1,
+        "first_score": 634,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "ハライチ",
+        "agency": "ワタナベエンターテインメント",
+        "first_order": 6,
+        "first_score": 628,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "東京ダイナマイト",
+        "agency": "オフィス北野",
+        "first_order": 3,
+        "first_score": 614,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "モンスターエンジン",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 610,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "南海キャンディーズ",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 607,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "ハリセンボン",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 595,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2010": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "笑い飯",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 668,
+        "final_order": 2,
+        "final_votes": 4
+      },
+      {
+        "rank": 2,
+        "name": "スリムクラブ",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 644,
+        "final_order": 1,
+        "final_votes": 3
+      },
+      {
+        "rank": 3,
+        "name": "パンクブーブー",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 668,
+        "final_order": 3,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "ピース",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 629,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "銀シャリ",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 627,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "ナイツ",
+        "agency": "マセキ芸能社",
+        "first_order": 5,
+        "first_score": 626,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "ハライチ",
+        "agency": "ワタナベエンターテインメント",
+        "first_order": 7,
+        "first_score": 620,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "ジャルジャル",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 606,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "カナリア",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 592,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2011": {
+    "held": false,
+    "reason": "開催なし（M-1グランプリは2010年で一旦終了し、2015年に再開）",
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": []
+  },
+  "2012": {
+    "held": false,
+    "reason": "開催なし（M-1グランプリは2010年で一旦終了し、2015年に再開）",
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": []
+  },
+  "2013": {
+    "held": false,
+    "reason": "開催なし（M-1グランプリは2010年で一旦終了し、2015年に再開）",
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": []
+  },
+  "2014": {
+    "held": false,
+    "reason": "開催なし（M-1グランプリは2010年で一旦終了し、2015年に再開）",
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ",
+    "finalists": []
+  },
+  "2015": {
+    "held": true,
+    "judges_count": 9,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2015",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "トレンディエンジェル",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 825,
+        "final_order": 2,
+        "final_votes": 6
+      },
+      {
+        "rank": 2,
+        "name": "銀シャリ",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 818,
+        "final_order": 1,
+        "final_votes": 2
+      },
+      {
+        "rank": 3,
+        "name": "ジャルジャル",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 834,
+        "final_order": 3,
+        "final_votes": 1
+      },
+      {
+        "rank": 4,
+        "name": "タイムマシーン3号",
+        "agency": "太田プロダクション",
+        "first_order": 8,
+        "first_score": 816,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "スーパーマラドーナ",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 813,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "和牛",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 806,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "メイプル超合金",
+        "agency": "サンミュージックプロダクション",
+        "first_order": 1,
+        "first_score": 796,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "馬鹿よ貴方は",
+        "agency": "オフィス北野",
+        "first_order": 2,
+        "first_score": 791,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "ハライチ",
+        "agency": "ワタナベエンターテインメント",
+        "first_order": 7,
+        "first_score": 788,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2016": {
+    "held": true,
+    "judges_count": 5,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2016",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "銀シャリ",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 470,
+        "final_order": 3,
+        "final_votes": 3
+      },
+      {
+        "rank": 2,
+        "name": "和牛",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 469,
+        "final_order": 2,
+        "final_votes": 1
+      },
+      {
+        "rank": 3,
+        "name": "スーパーマラドーナ",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 459,
+        "final_order": 1,
+        "final_votes": 1
+      },
+      {
+        "rank": 4,
+        "name": "さらば青春の光",
+        "agency": "ザ・森東",
+        "first_order": 8,
+        "first_score": 448,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "アキナ",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 446,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "ハライチ",
+        "agency": "ワタナベエンターテインメント",
+        "first_order": 6,
+        "first_score": 446,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "カミナリ",
+        "agency": "グレープカンパニー",
+        "first_order": 2,
+        "first_score": 441,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "スリムクラブ",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 441,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "相席スタート",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 436,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2017": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2017",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "とろサーモン",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 645,
+        "final_order": 1,
+        "final_votes": 4
+      },
+      {
+        "rank": 2,
+        "name": "和牛",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 653,
+        "final_order": 3,
+        "final_votes": 3
+      },
+      {
+        "rank": 3,
+        "name": "ミキ",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 650,
+        "final_order": 2,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "スーパーマラドーナ",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 640,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 4,
+        "name": "かまいたち",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 640,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "ジャルジャル",
+        "agency": "吉本興業",
+        "first_order": 10,
+        "first_score": 636,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "さや香",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 628,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "ゆにばーす",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 626,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "カミナリ",
+        "agency": "グレープカンパニー",
+        "first_order": 2,
+        "first_score": 618,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "マヂカルラブリー",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 607,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2018": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2018",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "霜降り明星",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 662,
+        "final_order": 3,
+        "final_votes": 4
+      },
+      {
+        "rank": 2,
+        "name": "和牛",
+        "agency": "吉本興業",
+        "first_order": 10,
+        "first_score": 656,
+        "final_order": 2,
+        "final_votes": 3
+      },
+      {
+        "rank": 3,
+        "name": "ジャルジャル",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 648,
+        "final_order": 1,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "ミキ",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 638,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "かまいたち",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 636,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "トム・ブラウン",
+        "agency": "ケイダッシュステージ",
+        "first_order": 8,
+        "first_score": 633,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "スーパーマラドーナ",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 617,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "ギャロップ",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 614,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "見取り図",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 606,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "ゆにばーす",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 594,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2019": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2019",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "ミルクボーイ",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 681,
+        "final_order": 3,
+        "final_votes": 6
+      },
+      {
+        "rank": 2,
+        "name": "かまいたち",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 660,
+        "final_order": 2,
+        "final_votes": 1
+      },
+      {
+        "rank": 3,
+        "name": "ぺこぱ",
+        "agency": "サンミュージックプロダクション",
+        "first_order": 10,
+        "first_score": 654,
+        "final_order": 1,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "和牛",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 652,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "見取り図",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 649,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "からし蓮根",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 639,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "オズワルド",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 638,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "すゑひろがりず",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 637,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "インディアンス",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 632,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "ニューヨーク",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 616,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2020": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2020",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "マヂカルラブリー",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 649,
+        "final_order": 2,
+        "final_votes": 3
+      },
+      {
+        "rank": 2,
+        "name": "おいでやすこが",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 658,
+        "final_order": 3,
+        "final_votes": 2
+      },
+      {
+        "rank": 3,
+        "name": "見取り図",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 648,
+        "final_order": 1,
+        "final_votes": 2
+      },
+      {
+        "rank": 4,
+        "name": "錦鯉",
+        "agency": "SMA",
+        "first_order": 9,
+        "first_score": 643,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "ニューヨーク",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 642,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "オズワルド",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 642,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "インディアンス",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 625,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "アキナ",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 622,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "ウエストランド",
+        "agency": "タイタン",
+        "first_order": 10,
+        "first_score": 622,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "東京ホテイソン",
+        "agency": "グレープカンパニー",
+        "first_order": 2,
+        "first_score": 617,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2021": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2021",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "錦鯉",
+        "agency": "SMA",
+        "first_order": 8,
+        "first_score": 655,
+        "final_order": 2,
+        "final_votes": 5
+      },
+      {
+        "rank": 2,
+        "name": "オズワルド",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 665,
+        "final_order": 3,
+        "final_votes": 1
+      },
+      {
+        "rank": 3,
+        "name": "インディアンス",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 655,
+        "final_order": 1,
+        "final_votes": 1
+      },
+      {
+        "rank": 4,
+        "name": "ロングコートダディ",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 649,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "もも",
+        "agency": "グレープカンパニー",
+        "first_order": 10,
+        "first_score": 645,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "ゆにばーす",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 638,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "真空ジェシカ",
+        "agency": "プロダクション人力舎",
+        "first_order": 5,
+        "first_score": 638,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "モグライダー",
+        "agency": "マセキ芸能社",
+        "first_order": 1,
+        "first_score": 637,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "ハライチ",
+        "agency": "ワタナベエンターテインメント",
+        "first_order": 4,
+        "first_score": 636,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "ランジャタイ",
+        "agency": "グレープカンパニー",
+        "first_order": 2,
+        "first_score": 628,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2022": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2022",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "ウエストランド",
+        "agency": "タイタン",
+        "first_order": 10,
+        "first_score": 659,
+        "final_order": 1,
+        "final_votes": 6
+      },
+      {
+        "rank": 2,
+        "name": "さや香",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 667,
+        "final_order": 3,
+        "final_votes": 1
+      },
+      {
+        "rank": 3,
+        "name": "ロングコートダディ",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 660,
+        "final_order": 2,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "男性ブランコ",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 650,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "真空ジェシカ",
+        "agency": "プロダクション人力舎",
+        "first_order": 2,
+        "first_score": 647,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "ヨネダ2000",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 647,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "オズワルド",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 639,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "カベポスター",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 634,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "キュウ",
+        "agency": "タイタン",
+        "first_order": 9,
+        "first_score": 620,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "ダイヤモンド",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 616,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2023": {
+    "held": true,
+    "judges_count": 7,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2023",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "令和ロマン",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 648,
+        "final_order": 1,
+        "final_votes": 4
+      },
+      {
+        "rank": 2,
+        "name": "ヤーレンズ",
+        "agency": "ケイダッシュステージ",
+        "first_order": 6,
+        "first_score": 656,
+        "final_order": 2,
+        "final_votes": 3
+      },
+      {
+        "rank": 3,
+        "name": "さや香",
+        "agency": "吉本興業",
+        "first_order": 3,
+        "first_score": 659,
+        "final_order": 3,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "マユリカ",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 645,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "真空ジェシカ",
+        "agency": "プロダクション人力舎",
+        "first_order": 7,
+        "first_score": 643,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "カベポスター",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 635,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "モグライダー",
+        "agency": "マセキ芸能社",
+        "first_order": 10,
+        "first_score": 632,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "ダンビラムーチョ",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 631,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "シシガシラ",
+        "agency": "吉本興業",
+        "first_order": 2,
+        "first_score": 627,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "くらげ",
+        "agency": "SMA",
+        "first_order": 9,
+        "first_score": 620,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2024": {
+    "held": true,
+    "judges_count": 9,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2024",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "令和ロマン",
+        "agency": "吉本興業",
+        "first_order": 1,
+        "first_score": 850,
+        "final_order": 2,
+        "final_votes": 5
+      },
+      {
+        "rank": 2,
+        "name": "バッテリィズ",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 861,
+        "final_order": 3,
+        "final_votes": 3
+      },
+      {
+        "rank": 3,
+        "name": "真空ジェシカ",
+        "agency": "プロダクション人力舎",
+        "first_order": 3,
+        "first_score": 849,
+        "final_order": 1,
+        "final_votes": 1
+      },
+      {
+        "rank": 4,
+        "name": "エバース",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 848,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "ヤーレンズ",
+        "agency": "ケイダッシュステージ",
+        "first_order": 2,
+        "first_score": 825,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "トム・ブラウン",
+        "agency": "ケイダッシュステージ",
+        "first_order": 10,
+        "first_score": 823,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "ダイタク",
+        "agency": "吉本興業",
+        "first_order": 5,
+        "first_score": 820,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "マユリカ",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 820,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "ジョックロック",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 819,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "ママタルト",
+        "agency": "サンミュージックプロダクション",
+        "first_order": 8,
+        "first_score": 812,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  },
+  "2025": {
+    "held": true,
+    "judges_count": 9,
+    "source": "https://ja.wikipedia.org/wiki/M-1グランプリ2025",
+    "finalists": [
+      {
+        "rank": 1,
+        "name": "たくろう",
+        "agency": "吉本興業",
+        "first_order": 7,
+        "first_score": 861,
+        "final_order": 3,
+        "final_votes": 8
+      },
+      {
+        "rank": 2,
+        "name": "ドンデコルテ",
+        "agency": "吉本興業",
+        "first_order": 8,
+        "first_score": 845,
+        "final_order": 1,
+        "final_votes": 1
+      },
+      {
+        "rank": 3,
+        "name": "エバース",
+        "agency": "吉本興業",
+        "first_order": 4,
+        "first_score": 870,
+        "final_order": 2,
+        "final_votes": 0
+      },
+      {
+        "rank": 4,
+        "name": "真空ジェシカ",
+        "agency": "プロダクション人力舎",
+        "first_order": 5,
+        "first_score": 844,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 5,
+        "name": "ヤーレンズ",
+        "agency": "ケイダッシュステージ",
+        "first_order": 1,
+        "first_score": 843,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 6,
+        "name": "豪快キャプテン",
+        "agency": "吉本興業",
+        "first_order": 9,
+        "first_score": 839,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 7,
+        "name": "カナメストーン",
+        "agency": "マセキ芸能社",
+        "first_order": 3,
+        "first_score": 830,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 8,
+        "name": "ヨネダ2000",
+        "agency": "吉本興業",
+        "first_order": 6,
+        "first_score": 826,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 9,
+        "name": "ママタルト",
+        "agency": "サンミュージックプロダクション",
+        "first_order": 10,
+        "first_score": 823,
+        "final_order": null,
+        "final_votes": null
+      },
+      {
+        "rank": 10,
+        "name": "めぞん",
+        "agency": "太田プロダクション",
+        "first_order": 2,
+        "first_score": 820,
+        "final_order": null,
+        "final_votes": null
+      }
+    ]
+  }
+}

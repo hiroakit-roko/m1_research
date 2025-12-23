@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-1グランプリ 出番順の考察 - 全21大会を統計的に考察</title>
+    <meta name="description" content="M-1グランプリ2001-2025年の全決勝データを分析。出番順が得点に与える影響を統計的に検証します。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+            --text: #eaeaea;
+            --text-muted: #a0a0a0;
+            --bg-dark: #0f0f1a;
+            --bg-card: rgba(26, 26, 46, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--bg-dark) 100%);
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', 'Noto Sans JP', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--text-muted);
+        }
+
+        /* Section Common */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 0.02em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-lead {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        /* Start Analysis Section */
+        .start-analysis {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary) 100%);
+            padding: 0;
+            max-width: 100%;
+        }
+
+        .start-analysis-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .analysis-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .analysis-hero {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .analysis-image {
+            position: relative;
+        }
+
+        .analysis-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(233, 69, 96, 0.3);
+        }
+
+        .analysis-content h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .analysis-content h2 span {
+            color: var(--accent);
+        }
+
+        .analysis-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(233, 69, 96, 0.25);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .chart-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        /* Findings */
+        .findings-summary {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 4px solid var(--accent);
+        }
+
+        .findings-summary p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--text);
+        }
+
+        .findings-summary strong {
+            color: var(--accent-light);
+        }
+
+        .findings-summary .highlight-good {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .findings-summary .highlight-bad {
+            color: #ff6b6b;
+            font-weight: 700;
+        }
+
+        /* Heatmap */
+        .heatmap-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .heatmap {
+            display: grid;
+            grid-template-columns: auto repeat(10, 1fr);
+            gap: 2px;
+            min-width: 800px;
+        }
+
+        .heatmap-cell {
+            padding: 0.4rem;
+            text-align: center;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            min-width: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .heatmap-score {
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .heatmap-name {
+            font-size: 0.55rem;
+            opacity: 0.9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 65px;
+        }
+
+        .heatmap-cell.animate {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: heatmapFadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes heatmapFadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .heatmap-header {
+            background: var(--secondary);
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .heatmap-year {
+            background: var(--secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Methodology */
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .method-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .method-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .method-card code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* Key Insight Box */
+        .insight-box {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .insight-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+        }
+
+        .insight-box .big-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+            margin: 1rem 0;
+        }
+
+        /* Winner Analysis */
+        .winner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .winner-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .winner-card.highlight {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, var(--bg-card) 100%);
+        }
+
+        .winner-order {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .winner-count {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        /* Utility */
+        .text-accent { color: var(--accent); }
+        .text-gold { color: var(--gold); }
+        .text-muted { color: var(--text-muted); }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+        }
+
+        .loading::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--accent);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table th {
+            background: var(--secondary);
+            font-weight: 700;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .finding-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">M-1 Research</div>
+        <ul class="nav-links">
+            <li><a href="#analysis">分析開始</a></li>
+            <li><a href="#findings">分析結果</a></li>
+            <li><a href="#data">データ</a></li>
+            <li><a href="#zscore">Z-score</a></li>
+            <li><a href="#methodology">手法</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>M-1グランプリ<br>出番順の考察</h1>
+            <p class="subtitle">全21大会を統計的に考察</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="total-years">21</div>
+                    <div class="stat-label">大会</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-performers">197</div>
+                    <div class="stat-label">出場組</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
+    </section>
+
+    <section class="start-analysis" id="analysis">
+        <div class="start-analysis-inner">
+            <div class="analysis-hero">
+                <div class="analysis-image">
+                    <img src="image/M1_2025.jpeg" alt="M-1グランプリ2025 はじめましょう。">
+                </div>
+                <div class="analysis-content">
+                    <p>
+                        「トップバッターは不利」「後半有利」——
+                        M-1グランプリを見るたびに囁かれるこの定説。<br><br>
+                        しかし、本当にそうなのでしょうか？<br><br>
+                        2001年の第1回大会から2025年まで、21年分・197組の決勝進出者データを収集し、
+                        出番順が得点に与える影響を統計的に検証しました。<br><br>
+                        各年の採点基準の違いを吸収するためMin-Max正規化を適用し、
+                        95%信頼区間を算出することで、統計的に有意な傾向があるのかを明らかにします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="findings">
+        <h2 class="section-title">分析結果</h2>
+        <p class="section-lead">グラフで見る出番順と得点の関係</p>
+
+        <div class="chart-container fade-in">
+            <h3 class="chart-title">出番順別 平均正規化スコア（0-100）</h3>
+            <p class="chart-description">各年の得点をmin-max正規化（0-100）し、出番順ごとに平均を算出。エラーバーは95%信頼区間を表示。</p>
+            <div class="chart-wrapper">
+                <canvas id="orderChart"></canvas>
+            </div>
+            <p class="chart-description" id="ci-info" style="margin-top: 1rem; font-size: 0.85rem;"></p>
+        </div>
+
+        <div class="findings-summary fade-in">
+            <h3 class="chart-title">主要な発見</h3>
+            <p id="findings-text">データを分析中...</p>
+        </div>
+
+    </section>
+
+    <section id="data">
+        <h2 class="section-title">年別ヒートマップ</h2>
+        <p class="section-lead">各年の出番順別正規化スコアを色で可視化（赤=高得点、青=低得点）</p>
+
+        <div class="heatmap-container fade-in">
+            <div class="heatmap" id="heatmap">
+                <div class="loading"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="zscore">
+        <h2 class="section-title">年別傾向分析（Z-score）</h2>
+        <p class="section-lead">各年の得点分布から、採点傾向を分析</p>
+
+        <div class="chart-container fade-in">
+            <h3 class="chart-title">年別 得点の標準偏差（ばらつき）</h3>
+            <p class="chart-description">標準偏差が大きい年は審査員が得点差を大きくつける傾向があり、小さい年は僅差の採点傾向だったことを示す。</p>
+            <div class="chart-wrapper">
+                <canvas id="stdDevChart"></canvas>
+            </div>
+            <p class="chart-description" style="margin-top: 1rem;">
+                <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <span style="display: inline-block; width: 60px; height: 12px; background: linear-gradient(to right, rgba(78, 205, 196, 0.8), rgba(233, 69, 96, 0.8)); border-radius: 2px;"></span>
+                <span style="margin-left: 0.5rem;">僅差の採点 → 大差の採点</span></span>
+            </p>
+        </div>
+
+        <div class="chart-container fade-in">
+            <h3 class="chart-title">ファーストラウンド トップの圧倒度（Z-score）</h3>
+            <p class="chart-description">各年のファーストラウンド1位が、その年の平均からどれだけ離れた得点だったか。Z-scoreが高いほど圧倒的なトップ。</p>
+            <div class="chart-wrapper" style="height: 600px;">
+                <canvas id="winnerZScoreChart"></canvas>
+            </div>
+            <p class="chart-description" style="margin-top: 1rem;">
+                <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <span style="display: inline-block; width: 60px; height: 12px; background: linear-gradient(to right, rgba(120, 120, 140, 0.8), rgba(255, 215, 0, 0.8)); border-radius: 2px;"></span>
+                <span style="margin-left: 0.5rem;">僅差 → 圧倒的</span></span>
+            </p>
+        </div>
+    </section>
+
+    <section id="methodology">
+        <h2 class="section-title">分析手法</h2>
+        <p class="section-lead">データの正規化と統計処理について</p>
+
+        <div class="methodology-grid">
+            <div class="method-card fade-in">
+                <h4>Min-Max正規化</h4>
+                <p>各年の得点を0-100にスケーリング。年ごとの採点基準の違いを吸収。</p>
+                <code>score = (raw - min) / (max - min) × 100</code>
+            </div>
+            <div class="method-card fade-in">
+                <h4>Z-score（標準化得点）</h4>
+                <p>各年の平均と標準偏差で標準化。年をまたいだ比較が可能に。</p>
+                <code>z = (得点 - 年平均) / 標準偏差</code>
+            </div>
+            <div class="method-card fade-in">
+                <h4>審査員数の考慮</h4>
+                <p>2015・2024・2025年は9人、2016年は5人、他は7人。正規化で吸収。</p>
+            </div>
+            <div class="method-card fade-in">
+                <h4>データソース</h4>
+                <p>Wikipedia各年大会記事より収集。2001-2025年の全決勝進出者データ。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>データソース: <a href="https://ja.wikipedia.org/wiki/M-1グランプリ" target="_blank">Wikipedia M-1グランプリ</a></p>
+        <p style="margin-top: 1rem;"><a href="https://twitter.com/hiroakit_roko" target="_blank">@hiroakit_roko</a></p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">※本研究は個人による分析であり、M-1グランプリ公式とは無関係です</p>
+    </footer>
+
+    <script>
+        // M-1 Data (embedded for GitHub Pages static hosting)
+        const m1Data = {
+            "2001": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "中川家", "first_order": 1, "first_score": 829, "final_order": 1}, {"rank": 2, "name": "ハリガネロック", "first_order": 10, "first_score": 809, "final_order": 2}, {"rank": 3, "name": "アメリカザリガニ", "first_order": 4, "first_score": 796}, {"rank": 4, "name": "ますだおかだ", "first_order": 8, "first_score": 770}, {"rank": 5, "name": "麒麟", "first_order": 7, "first_score": 741}, {"rank": 6, "name": "フットボールアワー", "first_order": 2, "first_score": 726}, {"rank": 7, "name": "キングコング", "first_order": 6, "first_score": 707}, {"rank": 8, "name": "チュートリアル", "first_order": 3, "first_score": 637}, {"rank": 9, "name": "DonDokoDon", "first_order": 9, "first_score": 614}, {"rank": 10, "name": "おぎやはぎ", "first_order": 5, "first_score": 540}]},
+            "2002": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "ますだおかだ", "first_order": 2, "first_score": 612, "final_order": 3}, {"rank": 2, "name": "フットボールアワー", "first_order": 5, "first_score": 621, "final_order": 1}, {"rank": 3, "name": "笑い飯", "first_order": 6, "first_score": 567, "final_order": 2}, {"rank": 4, "name": "おぎやはぎ", "first_order": 7, "first_score": 561}, {"rank": 5, "name": "ハリガネロック", "first_order": 1, "first_score": 545}, {"rank": 6, "name": "テツandトモ", "first_order": 4, "first_score": 539}, {"rank": 7, "name": "スピードワゴン", "first_order": 9, "first_score": 535}, {"rank": 8, "name": "ダイノジ", "first_order": 3, "first_score": 534}, {"rank": 9, "name": "アメリカザリガニ", "first_order": 8, "first_score": 525}]},
+            "2003": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "フットボールアワー", "first_order": 7, "first_score": 663, "final_order": 3}, {"rank": 2, "name": "笑い飯", "first_order": 4, "first_score": 656, "final_order": 1}, {"rank": 3, "name": "アンタッチャブル", "first_order": 9, "first_score": 616, "final_order": 2}, {"rank": 4, "name": "2丁拳銃", "first_order": 5, "first_score": 608}, {"rank": 5, "name": "りあるキッズ", "first_order": 8, "first_score": 601}, {"rank": 6, "name": "スピードワゴン", "first_order": 3, "first_score": 572}, {"rank": 7, "name": "アメリカザリガニ", "first_order": 6, "first_score": 564}, {"rank": 8, "name": "麒麟", "first_order": 2, "first_score": 554}, {"rank": 9, "name": "千鳥", "first_order": 1, "first_score": 552}]},
+            "2004": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "アンタッチャブル", "first_order": 8, "first_score": 673, "final_order": 1}, {"rank": 2, "name": "南海キャンディーズ", "first_order": 5, "first_score": 639, "final_order": 3}, {"rank": 3, "name": "麒麟", "first_order": 9, "first_score": 634, "final_order": 2}, {"rank": 4, "name": "タカアンドトシ", "first_order": 2, "first_score": 615}, {"rank": 5, "name": "笑い飯", "first_order": 7, "first_score": 615}, {"rank": 6, "name": "POISON GIRL BAND", "first_order": 6, "first_score": 603}, {"rank": 7, "name": "トータルテンボス", "first_order": 4, "first_score": 587}, {"rank": 8, "name": "東京ダイナマイト", "first_order": 3, "first_score": 583}, {"rank": 9, "name": "千鳥", "first_order": 1, "first_score": 582}]},
+            "2005": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "ブラックマヨネーズ", "first_order": 5, "first_score": 659, "final_order": 3}, {"rank": 2, "name": "笑い飯", "first_order": 1, "first_score": 633, "final_order": 2}, {"rank": 3, "name": "麒麟", "first_order": 8, "first_score": 646, "final_order": 1}, {"rank": 4, "name": "品川庄司", "first_order": 6, "first_score": 626}, {"rank": 5, "name": "チュートリアル", "first_order": 4, "first_score": 622}, {"rank": 6, "name": "千鳥", "first_order": 9, "first_score": 607}, {"rank": 7, "name": "タイムマシーン3号", "first_order": 7, "first_score": 571}, {"rank": 8, "name": "アジアン", "first_order": 2, "first_score": 564}, {"rank": 9, "name": "南海キャンディーズ", "first_order": 3, "first_score": 552}]},
+            "2006": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "チュートリアル", "first_order": 6, "first_score": 664, "final_order": 3}, {"rank": 2, "name": "フットボールアワー", "first_order": 2, "first_score": 640, "final_order": 2}, {"rank": 3, "name": "麒麟", "first_order": 4, "first_score": 627, "final_order": 1}, {"rank": 4, "name": "笑い飯", "first_order": 8, "first_score": 626}, {"rank": 5, "name": "トータルテンボス", "first_order": 5, "first_score": 613}, {"rank": 6, "name": "ライセンス", "first_order": 9, "first_score": 609}, {"rank": 7, "name": "ザ・プラン9", "first_order": 3, "first_score": 597}, {"rank": 8, "name": "変ホ長調", "first_order": 7, "first_score": 576}, {"rank": 9, "name": "POISON GIRL BAND", "first_order": 1, "first_score": 570}]},
+            "2007": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "サンドウィッチマン", "first_order": 9, "first_score": 651, "final_order": 3}, {"rank": 2, "name": "トータルテンボス", "first_order": 5, "first_score": 646, "final_order": 1}, {"rank": 3, "name": "キングコング", "first_order": 6, "first_score": 650, "final_order": 2}, {"rank": 4, "name": "ハリセンボン", "first_order": 7, "first_score": 608}, {"rank": 5, "name": "笑い飯", "first_order": 1, "first_score": 604}, {"rank": 6, "name": "ザブングル", "first_order": 3, "first_score": 597}, {"rank": 7, "name": "ダイアン", "first_order": 8, "first_score": 593}, {"rank": 8, "name": "千鳥", "first_order": 4, "first_score": 580}, {"rank": 9, "name": "POISON GIRL BAND", "first_order": 2, "first_score": 577}]},
+            "2008": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "NON STYLE", "first_order": 7, "first_score": 644, "final_order": 2}, {"rank": 2, "name": "オードリー", "first_order": 9, "first_score": 649, "final_order": 3}, {"rank": 3, "name": "ナイツ", "first_order": 4, "first_score": 640, "final_order": 1}, {"rank": 4, "name": "笑い飯", "first_order": 2, "first_score": 637}, {"rank": 5, "name": "U字工事", "first_order": 5, "first_score": 623}, {"rank": 6, "name": "ダイアン", "first_order": 1, "first_score": 619}, {"rank": 7, "name": "モンスターエンジン", "first_order": 3, "first_score": 614}, {"rank": 8, "name": "キングコング", "first_order": 8, "first_score": 612}, {"rank": 9, "name": "ザ・パンチ", "first_order": 6, "first_score": 591}]},
+            "2009": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "パンクブーブー", "first_order": 8, "first_score": 651, "final_order": 2}, {"rank": 2, "name": "笑い飯", "first_order": 5, "first_score": 668, "final_order": 3}, {"rank": 3, "name": "NON STYLE", "first_order": 9, "first_score": 641, "final_order": 1}, {"rank": 4, "name": "ナイツ", "first_order": 1, "first_score": 634}, {"rank": 5, "name": "ハライチ", "first_order": 6, "first_score": 628}, {"rank": 6, "name": "東京ダイナマイト", "first_order": 3, "first_score": 614}, {"rank": 7, "name": "モンスターエンジン", "first_order": 7, "first_score": 610}, {"rank": 8, "name": "南海キャンディーズ", "first_order": 2, "first_score": 607}, {"rank": 9, "name": "ハリセンボン", "first_order": 4, "first_score": 595}]},
+            "2010": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "笑い飯", "first_order": 6, "first_score": 668, "final_order": 2}, {"rank": 2, "name": "スリムクラブ", "first_order": 3, "first_score": 644, "final_order": 1}, {"rank": 3, "name": "パンクブーブー", "first_order": 9, "first_score": 668, "final_order": 3}, {"rank": 4, "name": "ピース", "first_order": 8, "first_score": 629}, {"rank": 5, "name": "銀シャリ", "first_order": 4, "first_score": 627}, {"rank": 6, "name": "ナイツ", "first_order": 5, "first_score": 626}, {"rank": 7, "name": "ハライチ", "first_order": 7, "first_score": 620}, {"rank": 8, "name": "ジャルジャル", "first_order": 2, "first_score": 606}, {"rank": 9, "name": "カナリア", "first_order": 1, "first_score": 592}]},
+            "2015": {"held": true, "judges_count": 9, "finalists": [{"rank": 1, "name": "トレンディエンジェル", "first_order": 9, "first_score": 825, "final_order": 2}, {"rank": 2, "name": "銀シャリ", "first_order": 6, "first_score": 818, "final_order": 1}, {"rank": 3, "name": "ジャルジャル", "first_order": 5, "first_score": 834, "final_order": 3}, {"rank": 4, "name": "タイムマシーン3号", "first_order": 8, "first_score": 816}, {"rank": 5, "name": "スーパーマラドーナ", "first_order": 3, "first_score": 813}, {"rank": 6, "name": "和牛", "first_order": 4, "first_score": 806}, {"rank": 7, "name": "メイプル超合金", "first_order": 1, "first_score": 796}, {"rank": 8, "name": "馬鹿よ貴方は", "first_order": 2, "first_score": 791}, {"rank": 9, "name": "ハライチ", "first_order": 7, "first_score": 788}]},
+            "2016": {"held": true, "judges_count": 5, "finalists": [{"rank": 1, "name": "銀シャリ", "first_order": 4, "first_score": 470, "final_order": 3}, {"rank": 2, "name": "和牛", "first_order": 9, "first_score": 469, "final_order": 2}, {"rank": 3, "name": "スーパーマラドーナ", "first_order": 7, "first_score": 459, "final_order": 1}, {"rank": 4, "name": "さらば青春の光", "first_order": 8, "first_score": 448}, {"rank": 5, "name": "アキナ", "first_order": 1, "first_score": 446}, {"rank": 6, "name": "ハライチ", "first_order": 6, "first_score": 446}, {"rank": 7, "name": "カミナリ", "first_order": 2, "first_score": 441}, {"rank": 8, "name": "スリムクラブ", "first_order": 5, "first_score": 441}, {"rank": 9, "name": "相席スタート", "first_order": 3, "first_score": 436}]},
+            "2017": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "とろサーモン", "first_order": 3, "first_score": 645, "final_order": 1}, {"rank": 2, "name": "和牛", "first_order": 9, "first_score": 653, "final_order": 3}, {"rank": 3, "name": "ミキ", "first_order": 8, "first_score": 650, "final_order": 2}, {"rank": 4, "name": "スーパーマラドーナ", "first_order": 4, "first_score": 640}, {"rank": 4, "name": "かまいたち", "first_order": 5, "first_score": 640}, {"rank": 6, "name": "ジャルジャル", "first_order": 10, "first_score": 636}, {"rank": 7, "name": "さや香", "first_order": 7, "first_score": 628}, {"rank": 8, "name": "ゆにばーす", "first_order": 1, "first_score": 626}, {"rank": 9, "name": "カミナリ", "first_order": 2, "first_score": 618}, {"rank": 10, "name": "マヂカルラブリー", "first_order": 6, "first_score": 607}]},
+            "2018": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "霜降り明星", "first_order": 9, "first_score": 662, "final_order": 3}, {"rank": 2, "name": "和牛", "first_order": 10, "first_score": 656, "final_order": 2}, {"rank": 3, "name": "ジャルジャル", "first_order": 4, "first_score": 648, "final_order": 1}, {"rank": 4, "name": "ミキ", "first_order": 7, "first_score": 638}, {"rank": 5, "name": "かまいたち", "first_order": 3, "first_score": 636}, {"rank": 6, "name": "トム・ブラウン", "first_order": 8, "first_score": 633}, {"rank": 7, "name": "スーパーマラドーナ", "first_order": 2, "first_score": 617}, {"rank": 8, "name": "ギャロップ", "first_order": 5, "first_score": 614}, {"rank": 9, "name": "見取り図", "first_order": 1, "first_score": 606}, {"rank": 10, "name": "ゆにばーす", "first_order": 6, "first_score": 594}]},
+            "2019": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "ミルクボーイ", "first_order": 7, "first_score": 681, "final_order": 3}, {"rank": 2, "name": "かまいたち", "first_order": 2, "first_score": 660, "final_order": 2}, {"rank": 3, "name": "ぺこぱ", "first_order": 10, "first_score": 654, "final_order": 1}, {"rank": 4, "name": "和牛", "first_order": 3, "first_score": 652}, {"rank": 5, "name": "見取り図", "first_order": 6, "first_score": 649}, {"rank": 6, "name": "からし蓮根", "first_order": 5, "first_score": 639}, {"rank": 7, "name": "オズワルド", "first_order": 8, "first_score": 638}, {"rank": 8, "name": "すゑひろがりず", "first_order": 4, "first_score": 637}, {"rank": 9, "name": "インディアンス", "first_order": 9, "first_score": 632}, {"rank": 10, "name": "ニューヨーク", "first_order": 1, "first_score": 616}]},
+            "2020": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "マヂカルラブリー", "first_order": 6, "first_score": 649, "final_order": 2}, {"rank": 2, "name": "おいでやすこが", "first_order": 5, "first_score": 658, "final_order": 3}, {"rank": 3, "name": "見取り図", "first_order": 4, "first_score": 648, "final_order": 1}, {"rank": 4, "name": "錦鯉", "first_order": 9, "first_score": 643}, {"rank": 5, "name": "ニューヨーク", "first_order": 3, "first_score": 642}, {"rank": 5, "name": "オズワルド", "first_order": 7, "first_score": 642}, {"rank": 7, "name": "インディアンス", "first_order": 1, "first_score": 625}, {"rank": 8, "name": "アキナ", "first_order": 8, "first_score": 622}, {"rank": 9, "name": "ウエストランド", "first_order": 10, "first_score": 622}, {"rank": 10, "name": "東京ホテイソン", "first_order": 2, "first_score": 617}]},
+            "2021": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "錦鯉", "first_order": 8, "first_score": 655, "final_order": 2}, {"rank": 2, "name": "オズワルド", "first_order": 6, "first_score": 665, "final_order": 3}, {"rank": 3, "name": "インディアンス", "first_order": 9, "first_score": 655, "final_order": 1}, {"rank": 4, "name": "ロングコートダディ", "first_order": 7, "first_score": 649}, {"rank": 5, "name": "もも", "first_order": 10, "first_score": 645}, {"rank": 6, "name": "ゆにばーす", "first_order": 3, "first_score": 638}, {"rank": 6, "name": "真空ジェシカ", "first_order": 5, "first_score": 638}, {"rank": 8, "name": "モグライダー", "first_order": 1, "first_score": 637}, {"rank": 9, "name": "ハライチ", "first_order": 4, "first_score": 636}, {"rank": 10, "name": "ランジャタイ", "first_order": 2, "first_score": 628}]},
+            "2022": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "ウエストランド", "first_order": 10, "first_score": 659, "final_order": 1}, {"rank": 2, "name": "さや香", "first_order": 5, "first_score": 667, "final_order": 3}, {"rank": 3, "name": "ロングコートダディ", "first_order": 4, "first_score": 660, "final_order": 2}, {"rank": 4, "name": "男性ブランコ", "first_order": 6, "first_score": 650}, {"rank": 5, "name": "真空ジェシカ", "first_order": 2, "first_score": 647}, {"rank": 5, "name": "ヨネダ2000", "first_order": 8, "first_score": 647}, {"rank": 7, "name": "オズワルド", "first_order": 3, "first_score": 639}, {"rank": 8, "name": "カベポスター", "first_order": 1, "first_score": 634}, {"rank": 9, "name": "キュウ", "first_order": 9, "first_score": 620}, {"rank": 10, "name": "ダイヤモンド", "first_order": 7, "first_score": 616}]},
+            "2023": {"held": true, "judges_count": 7, "finalists": [{"rank": 1, "name": "令和ロマン", "first_order": 1, "first_score": 648, "final_order": 1}, {"rank": 2, "name": "ヤーレンズ", "first_order": 6, "first_score": 656, "final_order": 2}, {"rank": 3, "name": "さや香", "first_order": 3, "first_score": 659, "final_order": 3}, {"rank": 4, "name": "マユリカ", "first_order": 5, "first_score": 645}, {"rank": 5, "name": "真空ジェシカ", "first_order": 7, "first_score": 643}, {"rank": 6, "name": "カベポスター", "first_order": 4, "first_score": 635}, {"rank": 7, "name": "モグライダー", "first_order": 10, "first_score": 632}, {"rank": 8, "name": "ダンビラムーチョ", "first_order": 8, "first_score": 631}, {"rank": 9, "name": "シシガシラ", "first_order": 2, "first_score": 627}, {"rank": 10, "name": "くらげ", "first_order": 9, "first_score": 620}]},
+            "2024": {"held": true, "judges_count": 9, "finalists": [{"rank": 1, "name": "令和ロマン", "first_order": 1, "first_score": 850, "final_order": 2}, {"rank": 2, "name": "バッテリィズ", "first_order": 7, "first_score": 861, "final_order": 3}, {"rank": 3, "name": "真空ジェシカ", "first_order": 3, "first_score": 849, "final_order": 1}, {"rank": 4, "name": "エバース", "first_order": 9, "first_score": 848}, {"rank": 5, "name": "ヤーレンズ", "first_order": 2, "first_score": 825}, {"rank": 6, "name": "トム・ブラウン", "first_order": 10, "first_score": 823}, {"rank": 7, "name": "ダイタク", "first_order": 5, "first_score": 820}, {"rank": 7, "name": "マユリカ", "first_order": 4, "first_score": 820}, {"rank": 9, "name": "ジョックロック", "first_order": 6, "first_score": 819}, {"rank": 10, "name": "ママタルト", "first_order": 8, "first_score": 812}]},
+            "2025": {"held": true, "judges_count": 9, "finalists": [{"rank": 1, "name": "たくろう", "first_order": 7, "first_score": 861, "final_order": 3}, {"rank": 2, "name": "ドンデコルテ", "first_order": 8, "first_score": 845, "final_order": 1}, {"rank": 3, "name": "エバース", "first_order": 4, "first_score": 870, "final_order": 2}, {"rank": 4, "name": "真空ジェシカ", "first_order": 5, "first_score": 844}, {"rank": 5, "name": "ヤーレンズ", "first_order": 1, "first_score": 843}, {"rank": 6, "name": "豪快キャプテン", "first_order": 9, "first_score": 839}, {"rank": 7, "name": "カナメストーン", "first_order": 3, "first_score": 830}, {"rank": 8, "name": "ヨネダ2000", "first_order": 6, "first_score": 826}, {"rank": 9, "name": "ママタルト", "first_order": 10, "first_score": 823}, {"rank": 10, "name": "めぞん", "first_order": 2, "first_score": 820}]}
+        };
+
+        // Analysis functions
+        function analyzeData() {
+            const orderStats = {};
+            const winnerOrders = [];
+            const finalOrders = [];
+            let totalPerformers = 0;
+
+            for (let order = 1; order <= 10; order++) {
+                orderStats[order] = {
+                    normalizedScores: [],
+                    zScores: [],
+                    finalCount: 0,
+                    winCount: 0,
+                    total: 0
+                };
+            }
+
+            Object.entries(m1Data).forEach(([year, data]) => {
+                if (!data.held || data.finalists.length === 0) return;
+
+                const scores = data.finalists.map(f => f.first_score);
+                const min = Math.min(...scores);
+                const max = Math.max(...scores);
+                const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+                const std = Math.sqrt(scores.map(s => Math.pow(s - mean, 2)).reduce((a, b) => a + b, 0) / scores.length);
+
+                data.finalists.forEach(finalist => {
+                    const order = finalist.first_order;
+                    if (order < 1 || order > 10) return;
+
+                    totalPerformers++;
+
+                    const normalizedScore = max !== min ? ((finalist.first_score - min) / (max - min)) * 100 : 50;
+                    const zScore = std !== 0 ? (finalist.first_score - mean) / std : 0;
+
+                    orderStats[order].normalizedScores.push(normalizedScore);
+                    orderStats[order].zScores.push(zScore);
+                    orderStats[order].total++;
+
+                    if (finalist.final_order) {
+                        orderStats[order].finalCount++;
+                        finalOrders.push(order);
+                    }
+
+                    if (finalist.rank === 1) {
+                        orderStats[order].winCount++;
+                        winnerOrders.push(order);
+                    }
+                });
+            });
+
+            // Calculate averages and 95% confidence intervals
+            Object.keys(orderStats).forEach(order => {
+                const stats = orderStats[order];
+                const n = stats.normalizedScores.length;
+
+                stats.avgNormalized = n > 0
+                    ? stats.normalizedScores.reduce((a, b) => a + b, 0) / n
+                    : 0;
+                stats.avgZScore = stats.zScores.length > 0
+                    ? stats.zScores.reduce((a, b) => a + b, 0) / stats.zScores.length
+                    : 0;
+                stats.finalRate = stats.total > 0 ? (stats.finalCount / stats.total) * 100 : 0;
+
+                // Calculate standard deviation and 95% CI
+                if (n > 1) {
+                    const variance = stats.normalizedScores.reduce((sum, x) => sum + Math.pow(x - stats.avgNormalized, 2), 0) / (n - 1);
+                    stats.stdDev = Math.sqrt(variance);
+                    stats.ci95 = 1.96 * (stats.stdDev / Math.sqrt(n));
+                } else {
+                    stats.stdDev = 0;
+                    stats.ci95 = 0;
+                }
+            });
+
+            // Calculate yearly statistics for Z-score analysis
+            const yearlyStats = {};
+            Object.entries(m1Data).forEach(([year, data]) => {
+                if (!data.held || data.finalists.length === 0) return;
+
+                const scores = data.finalists.map(f => f.first_score);
+                const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+                const variance = scores.reduce((sum, s) => sum + Math.pow(s - mean, 2), 0) / scores.length;
+                const stdDev = Math.sqrt(variance);
+                const min = Math.min(...scores);
+                const max = Math.max(...scores);
+
+                // Calculate Z-scores for each finalist
+                const zScores = data.finalists.map(f => ({
+                    name: f.name,
+                    score: f.first_score,
+                    zScore: stdDev > 0 ? (f.first_score - mean) / stdDev : 0,
+                    rank: f.rank
+                }));
+
+                // Find first round top scorer (highest first_score)
+                const topScorer = zScores.reduce((top, current) =>
+                    current.score > top.score ? current : top
+                , zScores[0]);
+
+                yearlyStats[year] = {
+                    mean,
+                    stdDev,
+                    min,
+                    max,
+                    range: max - min,
+                    judgesCount: data.judges_count,
+                    zScores,
+                    topZScore: topScorer ? topScorer.zScore : 0,
+                    topName: topScorer ? topScorer.name : ''
+                };
+            });
+
+            return { orderStats, winnerOrders, totalPerformers, yearlyStats };
+        }
+
+        // Gradient color helper function
+        function getGradientColor(value, min, max, lowColor = [120, 120, 140], highColor = [255, 215, 0]) {
+            const ratio = max !== min ? (value - min) / (max - min) : 0.5;
+            const r = Math.round(lowColor[0] + (highColor[0] - lowColor[0]) * ratio);
+            const g = Math.round(lowColor[1] + (highColor[1] - lowColor[1]) * ratio);
+            const b = Math.round(lowColor[2] + (highColor[2] - lowColor[2]) * ratio);
+            return `rgba(${r}, ${g}, ${b}, 0.8)`;
+        }
+
+        // Render charts
+        function renderCharts(analysis) {
+            const { orderStats, winnerOrders } = analysis;
+            const labels = Array.from({length: 10}, (_, i) => `${i + 1}番`);
+
+            // Custom plugin for error bars
+            const errorBarPlugin = {
+                id: 'errorBars',
+                afterDatasetsDraw(chart, args, options) {
+                    const { ctx, data, chartArea, scales } = chart;
+                    const dataset = data.datasets[0];
+                    const meta = chart.getDatasetMeta(0);
+
+                    ctx.save();
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 2;
+
+                    meta.data.forEach((bar, index) => {
+                        const stats = orderStats[index + 1];
+                        const x = bar.x;
+                        const yTop = scales.y.getPixelForValue(stats.avgNormalized + stats.ci95);
+                        const yBottom = scales.y.getPixelForValue(stats.avgNormalized - stats.ci95);
+                        const capWidth = 8;
+
+                        // Vertical line
+                        ctx.beginPath();
+                        ctx.moveTo(x, yTop);
+                        ctx.lineTo(x, yBottom);
+                        ctx.stroke();
+
+                        // Top cap
+                        ctx.beginPath();
+                        ctx.moveTo(x - capWidth, yTop);
+                        ctx.lineTo(x + capWidth, yTop);
+                        ctx.stroke();
+
+                        // Bottom cap
+                        ctx.beginPath();
+                        ctx.moveTo(x - capWidth, yBottom);
+                        ctx.lineTo(x + capWidth, yBottom);
+                        ctx.stroke();
+                    });
+
+                    ctx.restore();
+                }
+            };
+
+            // Order Chart (Normalized Scores) with error bars
+            const orderCtx = document.getElementById('orderChart').getContext('2d');
+            const avgData = Object.values(orderStats).map(s => s.avgNormalized);
+            const ciData = Object.values(orderStats).map(s => s.ci95);
+
+            new Chart(orderCtx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '平均正規化スコア',
+                        data: avgData,
+                        backgroundColor: (() => {
+                            const values = Object.values(orderStats).map(s => s.avgNormalized);
+                            const minVal = Math.min(...values);
+                            const maxVal = Math.max(...values);
+                            return values.map(v => getGradientColor(v, minVal, maxVal));
+                        })(),
+                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart',
+                        delay: (context) => context.dataIndex * 100
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(26, 26, 46, 0.95)',
+                            titleColor: '#fff',
+                            bodyColor: '#a0a0a0',
+                            borderColor: 'rgba(255, 255, 255, 0.2)',
+                            borderWidth: 1,
+                            padding: 12,
+                            callbacks: {
+                                label: (ctx) => {
+                                    const stats = orderStats[ctx.dataIndex + 1];
+                                    return [
+                                        `平均: ${stats.avgNormalized.toFixed(1)}点`,
+                                        `95%CI: ±${stats.ci95.toFixed(1)}点`,
+                                        `範囲: ${(stats.avgNormalized - stats.ci95).toFixed(1)} ~ ${(stats.avgNormalized + stats.ci95).toFixed(1)}`,
+                                        `n=${stats.total}`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#a0a0a0' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#a0a0a0' }
+                        }
+                    }
+                },
+                plugins: [errorBarPlugin]
+            });
+
+            // Display CI info and color legend
+            document.getElementById('ci-info').innerHTML =
+                `<span style="display: inline-flex; align-items: center; gap: 0.5rem;">` +
+                `<span style="display: inline-block; width: 60px; height: 12px; background: linear-gradient(to right, rgba(120, 120, 140, 0.8), rgba(255, 215, 0, 0.8)); border-radius: 2px;"></span>` +
+                `<span style="margin-left: 0.5rem;">低 → 高</span></span>` +
+                `<br><span style="margin-top: 0.5rem; display: inline-block;">エラーバー（白線）は95%信頼区間</span>`;
+
+        }
+
+        // Render heatmap
+        function renderHeatmap(analysis) {
+            const heatmapEl = document.getElementById('heatmap');
+            heatmapEl.innerHTML = '';
+
+            // Header
+            heatmapEl.innerHTML += '<div class="heatmap-cell heatmap-header">年</div>';
+            for (let i = 1; i <= 10; i++) {
+                heatmapEl.innerHTML += `<div class="heatmap-cell heatmap-header">${i}番</div>`;
+            }
+
+            // Data rows
+            const years = Object.keys(m1Data).filter(y => m1Data[y].held && m1Data[y].finalists.length > 0).sort();
+
+            years.forEach(year => {
+                const data = m1Data[year];
+                const scores = data.finalists.map(f => f.first_score);
+                const min = Math.min(...scores);
+                const max = Math.max(...scores);
+
+                heatmapEl.innerHTML += `<div class="heatmap-cell heatmap-year">${year}</div>`;
+
+                for (let order = 1; order <= 10; order++) {
+                    const finalist = data.finalists.find(f => f.first_order === order);
+                    if (finalist) {
+                        const normalized = max !== min ? ((finalist.first_score - min) / (max - min)) * 100 : 50;
+                        const hue = normalized * 1.2; // 0=blue, 120=green, but we want red for high
+                        const color = `hsl(${Math.max(0, 60 - normalized * 0.6)}, 70%, ${30 + normalized * 0.3}%)`;
+                        heatmapEl.innerHTML += `<div class="heatmap-cell" style="background: ${color}" title="${finalist.name}: ${finalist.first_score}点"><span class="heatmap-score">${normalized.toFixed(0)}</span><span class="heatmap-name">${finalist.name}</span></div>`;
+                    } else {
+                        heatmapEl.innerHTML += `<div class="heatmap-cell" style="background: #1a1a2e">-</div>`;
+                    }
+                }
+            });
+        }
+
+        // Render Z-score analysis
+        function renderZScoreAnalysis(analysis) {
+            const { yearlyStats } = analysis;
+            const years = Object.keys(yearlyStats).sort();
+
+            // Standard deviation chart
+            const stdDevCtx = document.getElementById('stdDevChart').getContext('2d');
+            const stdDevData = years.map(y => yearlyStats[y].stdDev);
+            const avgStdDev = stdDevData.reduce((a, b) => a + b, 0) / stdDevData.length;
+
+            // Use log scale for color gradient to handle outliers like 2001
+            const logStdDevData = stdDevData.map(sd => Math.log(sd + 1));
+            const minLogStdDev = Math.min(...logStdDevData);
+            const maxLogStdDev = Math.max(...logStdDevData);
+
+            new Chart(stdDevCtx, {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: '標準偏差',
+                        data: stdDevData,
+                        backgroundColor: logStdDevData.map(logSd =>
+                            getGradientColor(logSd, minLogStdDev, maxLogStdDev, [78, 205, 196], [233, 69, 96])
+                        ),
+                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart',
+                        delay: (context) => context.dataIndex * 50
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(26, 26, 46, 0.95)',
+                            callbacks: {
+                                label: (ctx) => {
+                                    const year = years[ctx.dataIndex];
+                                    const stats = yearlyStats[year];
+                                    return [
+                                        `標準偏差: ${stats.stdDev.toFixed(1)}`,
+                                        `平均点: ${stats.mean.toFixed(1)}`,
+                                        `得点幅: ${stats.range}点`,
+                                        `審査員: ${stats.judgesCount}人`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#a0a0a0' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#a0a0a0', maxRotation: 45 }
+                        }
+                    }
+                }
+            });
+
+            // First round top scorer Z-score horizontal bar chart
+            const topScorerData = years.map(y => ({
+                year: y,
+                name: yearlyStats[y].topName,
+                zScore: yearlyStats[y].topZScore
+            })).sort((a, b) => b.zScore - a.zScore);
+
+            const winnerZScoreCtx = document.getElementById('winnerZScoreChart').getContext('2d');
+            const zScoreValues = topScorerData.map(d => d.zScore);
+            const minZScore = Math.min(...zScoreValues);
+            const maxZScore = Math.max(...zScoreValues);
+
+            new Chart(winnerZScoreCtx, {
+                type: 'bar',
+                data: {
+                    labels: topScorerData.map(d => `${d.year} ${d.name}`),
+                    datasets: [{
+                        label: 'Z-score',
+                        data: zScoreValues,
+                        backgroundColor: zScoreValues.map(z =>
+                            getGradientColor(z, minZScore, maxZScore)
+                        ),
+                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart',
+                        delay: (context) => context.dataIndex * 80
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(26, 26, 46, 0.95)',
+                            callbacks: {
+                                label: (ctx) => {
+                                    const data = topScorerData[ctx.dataIndex];
+                                    return `Z-score: +${data.zScore.toFixed(2)}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#a0a0a0' },
+                            title: {
+                                display: true,
+                                text: 'Z-score（高いほど圧倒的）',
+                                color: '#a0a0a0'
+                            }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: {
+                                color: '#eaeaea',
+                                font: { size: 11 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update findings text
+        function updateFindings(analysis) {
+            const { orderStats, winnerOrders } = analysis;
+
+            // Calculate stats for summary
+            const overallAvg = Object.values(orderStats).reduce((sum, s) => sum + s.avgNormalized, 0) / 10;
+
+            // Early orders (1-3) average
+            const earlyAvg = (orderStats[1].avgNormalized + orderStats[2].avgNormalized + orderStats[3].avgNormalized) / 3;
+
+            // Middle-late orders (4-10) stats
+            const order5Avg = orderStats[5].avgNormalized;
+            const order9Avg = orderStats[9].avgNormalized;
+
+            // Find best orders
+            const sortedOrders = Object.entries(orderStats)
+                .map(([order, stats]) => ({ order: parseInt(order), avg: stats.avgNormalized }))
+                .sort((a, b) => b.avg - a.avg);
+
+            // Winner stats
+            const winnerOrderCounts = {};
+            winnerOrders.forEach(o => winnerOrderCounts[o] = (winnerOrderCounts[o] || 0) + 1);
+            const topBatterWins = winnerOrderCounts[1] || 0;
+
+            document.getElementById('findings-text').innerHTML =
+                `<span class="highlight-bad">1〜3番手は相対的に不利</span>。` +
+                `序盤グループの平均正規化スコアは${earlyAvg.toFixed(1)}点で、全体平均${overallAvg.toFixed(1)}点を下回っている。<br><br>` +
+                `<strong>4〜10番手の間では大きな差は見られない</strong>。` +
+                `その中でも<span class="highlight-good">5番手（${order5Avg.toFixed(1)}点）と9番手（${order9Avg.toFixed(1)}点）がやや高い</span>傾向にある。<br><br>` +
+                `<strong>トップバッターから${topBatterWins}組が優勝</strong>（中川家、令和ロマン×2）。`;
+        }
+
+        // Count-up animation
+        function animateCountUp(element, target, duration = 1500) {
+            const start = 0;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Easing function (ease-out cubic)
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(easeOut * target);
+
+                element.textContent = current;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = target;
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Initialize count-up for hero stats
+        function initCountUp() {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumbers = entry.target.querySelectorAll('.stat-number');
+                        statNumbers.forEach(el => {
+                            const target = parseInt(el.textContent);
+                            el.textContent = '0';
+                            animateCountUp(el, target, 1200);
+                        });
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const heroStats = document.querySelector('.hero-stats');
+            if (heroStats) {
+                statsObserver.observe(heroStats);
+            }
+        }
+
+        // Scroll animation
+        function initScrollAnimation() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        }
+
+        // Lazy load charts when visible
+        function initLazyCharts(analysis) {
+            let chartsRendered = false;
+            let heatmapRendered = false;
+            let zscoreRendered = false;
+
+            const chartObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !chartsRendered) {
+                        chartsRendered = true;
+                        renderCharts(analysis);
+                        chartObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            const heatmapObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !heatmapRendered) {
+                        heatmapRendered = true;
+                        renderHeatmap(analysis);
+                        // Add staggered animation to cells
+                        setTimeout(() => {
+                            const cells = document.querySelectorAll('.heatmap-cell:not(.heatmap-header):not(.heatmap-year)');
+                            cells.forEach((cell, index) => {
+                                cell.classList.add('animate');
+                                cell.style.animationDelay = `${index * 15}ms`;
+                            });
+                        }, 100);
+                        heatmapObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const zscoreObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !zscoreRendered) {
+                        zscoreRendered = true;
+                        renderZScoreAnalysis(analysis);
+                        zscoreObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            const chartSection = document.getElementById('findings');
+            const heatmapSection = document.getElementById('data');
+            const zscoreSection = document.getElementById('zscore');
+
+            if (chartSection) chartObserver.observe(chartSection);
+            if (heatmapSection) heatmapObserver.observe(heatmapSection);
+            if (zscoreSection) zscoreObserver.observe(zscoreSection);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            const analysis = analyzeData();
+
+            // Update stats
+            document.getElementById('total-performers').textContent = analysis.totalPerformers;
+
+            updateFindings(analysis);
+            initScrollAnimation();
+            initCountUp();
+            initLazyCharts(analysis);
+        });
+    </script>
+</body>
+</html>
